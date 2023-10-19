@@ -23,7 +23,12 @@ def get_birthdays_per_week(users):
 
         # Визначення дня тижня та зберігання результату
         if delta_days < 7:
-            weekday = birthday_this_year.strftime("%A")
+            weekday_num = birthday_this_year.weekday()
+            # Якщо день народження в суботу або неділю
+            if weekday_num == 5 or weekday_num == 6:
+                weekday = "Monday"
+            else:
+                weekday = birthday_this_year.strftime("%A")
             birthdays[weekday].append(name)
 
     # Виведення результату
@@ -35,7 +40,7 @@ def get_birthdays_per_week(users):
 users = [
     {"name": "Vadym Rymar", "birthday": datetime(1996, 10, 28)},
     {"name": "Martha Sereda", "birthday": datetime(1955, 4, 5)},
-    {"name": "Martha Sereda", "birthday": datetime(1955, 7, 18)},
-    {"name": "Mike Peres", "birthday": datetime(2005, 10, 19)},
+    {"name": "Mike Peres", "birthday": datetime(2005, 10, 21)},
+    {"name": "Mike RESS", "birthday": datetime(2005, 10, 22)},
 ]
 get_birthdays_per_week(users)
